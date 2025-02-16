@@ -223,9 +223,9 @@ CREATE TABLE `student` (
 
 INSERT INTO `student` (`sid`, `fname`, `lname`, `bday`, `address`, `parent`, `gender`, `classroom`, `email`) VALUES
 ('ST1000010001', 'Kasun', 'Chamara', '2001-06-26', 'Colombo Road \r\nKandy', 1, 'Male', '4-B', 'stu@stu.stu'),
-('ST1000010002', 'Dasun', 'Shanuka', '2020-05-31', 'Ampara Road \r\nUhana', 1, 'Male', '4-B', 'stu1@stu1.stu1'),
-('STU1000040000', 'Dilip', 'Silva', '2020-05-27', 'asasas', 0, 'Male', '4-B', 'dil@dil.dil'),
-('STU100004005', 'Hashini', 'Asiri', '2020-05-27', 'asassas', 1, 'Female', 'Select Class Room', 'h@h.h');
+('ST1000010002', 'Aisha', 'Kariuki', '2003-05-31', 'Langata, Nairobi', 1, 'Female', '4-B', 'aisha.kariuki@example.com'),
+('STU1000040000', 'Kevin', 'Mwangi', '2002-05-27', 'Kisumu', 0, 'Male', '4-B', 'kevin.mwangi@example.com'),
+('STU100004005', 'Grace', 'Wanjiru', '2004-05-27', 'Thika', 1, 'Female', 'Select Class Room', 'grace.wanjiru@example.com');
 
 -- --------------------------------------------------------
 
@@ -269,7 +269,7 @@ CREATE TABLE `teacher` (
 --
 
 INSERT INTO `teacher` (`tid`, `fname`, `lname`, `address`, `contact`, `bday`, `skill`, `gender`, `email`) VALUES
-('TC1000020000', 'Nimal ', 'Soyza', 'Kandy Road\r\nNittambuwa', '0339988554', '1990-06-19', 'Science\r\nMathematics\r\nHistory', 'Male', 'tea@tea.tea');
+('TC1000020000',  'Samuel', 'Omondi', 'Kisii, Kenya', '0723456789', '1988-06-19', 'Science\r\nMathematics\r\nHistory', 'Male', 'tea@tea.tea');
 
 -- --------------------------------------------------------
 
