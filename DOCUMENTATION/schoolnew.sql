@@ -10,7 +10,7 @@
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
-SET time_zone = "+03:00";
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -19,7 +19,7 @@ SET time_zone = "+03:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `schoolkenya`
+-- Database: `schoolnew`
 --
 
 -- --------------------------------------------------------
@@ -39,9 +39,9 @@ CREATE TABLE `attendance` (
 --
 
 INSERT INTO `attendance` (`sid`, `date`, `aid`) VALUES
-(2, '2024-02-12', 3),
-(1, '2024-02-13', 4),
-(2, '2024-02-14', 5);
+(2, '2020-05-25', 3),
+(1, '2020-05-30', 4),
+(2, '2020-05-02', 5);
 
 -- --------------------------------------------------------
 
@@ -83,7 +83,7 @@ CREATE TABLE `classroom` (
 --
 
 INSERT INTO `classroom` (`hno`, `title`, `location`, `capacity`) VALUES
-('4-A', 'Uhuru', 'Block-C', 45);
+('4-B', 'Nilwala', 'Block-D', 50);
 
 -- --------------------------------------------------------
 
@@ -106,7 +106,7 @@ CREATE TABLE `exam` (
 --
 
 INSERT INTO `exam` (`id`, `subject`, `teacher`, `classroom`, `date`, `stime`, `etime`) VALUES
-(1, 'MAT111', 'TC1000020000', '4-A', '2024-02-15', '08:30:00', '09:30:00');
+(1, 'SCM4251', 'TC1000020000', '4-B', '2020-05-26', '11:45:00', '12:45:00');
 
 -- --------------------------------------------------------
 
@@ -126,8 +126,8 @@ CREATE TABLE `examresult` (
 --
 
 INSERT INTO `examresult` (`exam`, `student`, `marks`, `grade`) VALUES
-(1, 'ST1000010001', 65, 'B-'),
-(1, 'ST1000010002', 82, 'A');
+(1, 'ST1000010001', 55, 'C+'),
+(1, 'ST1000010002', 77, 'A+');
 
 -- --------------------------------------------------------
 
@@ -138,7 +138,7 @@ INSERT INTO `examresult` (`exam`, `student`, `marks`, `grade`) VALUES
 CREATE TABLE `notice` (
   `id` int(11) NOT NULL,
   `notice` varchar(1500) NOT NULL,
-  `audience` varchar(100) NOT NULL,
+  `odience` varchar(100) NOT NULL,
   `date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -146,9 +146,9 @@ CREATE TABLE `notice` (
 -- Dumping data for table `notice`
 --
 
-INSERT INTO `notice` (`id`, `notice`, `audience`, `date`) VALUES
-(2, 'Parents meeting on school fees.', 'Parents', '2024-02-10 10:00:00'),
-(3, 'Half-term break starts next week.', 'All', '2024-02-11 12:00:00');
+INSERT INTO `notice` (`id`, `notice`, `odience`, `date`) VALUES
+(2, 'Meeting', 'Parent', '2020-05-28 02:53:02'),
+(3, 'aaasas', 'All', '2020-05-28 02:57:28');
 
 -- --------------------------------------------------------
 
@@ -164,7 +164,7 @@ CREATE TABLE `parent` (
   `job` varchar(50) NOT NULL,
   `address` varchar(250) NOT NULL,
   `gender` varchar(25) NOT NULL,
-  `id_no` varchar(50) NOT NULL,
+  `nic` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -172,8 +172,32 @@ CREATE TABLE `parent` (
 -- Dumping data for table `parent`
 --
 
-INSERT INTO `parent` (`pid`, `fname`, `lname`, `contact`, `job`, `address`, `gender`, `id_no`, `email`) VALUES
-(1, 'James', 'Mwangi', '0712345678', 'Engineer', 'Kenyatta Road, Nairobi', 'Male', '28765432', 'james.mwangi@example.com');
+INSERT INTO `parent` (`pid`, `fname`, `lname`, `contact`, `job`, `address`, `gender`, `nic`, `email`) VALUES
+(1, 'John', 'Odhiambo', '0712345678', 'Engineer', 'Nairobi, Kenya', 'Male', '12345678V', 'par@par.par');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `schedule`
+--
+
+CREATE TABLE `schedule` (
+  `id` int(11) NOT NULL,
+  `subject` varchar(50) NOT NULL,
+  `teacher` varchar(50) NOT NULL,
+  `day` varchar(50) NOT NULL,
+  `stime` time NOT NULL,
+  `class` varchar(50) NOT NULL,
+  `etime` time NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `schedule`
+--
+
+INSERT INTO `schedule` (`id`, `subject`, `teacher`, `day`, `stime`, `class`, `etime`) VALUES
+(1, 'SCM4251', 'TC1000020000', 'Wendsday', '04:15:00', '4-B', '04:15:00'),
+(2, 'SCM4251', 'TC1000020000', 'Thursday', '05:30:00', '4-B', '07:45:00');
 
 -- --------------------------------------------------------
 
@@ -198,8 +222,29 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`sid`, `fname`, `lname`, `bday`, `address`, `parent`, `gender`, `classroom`, `email`) VALUES
-('ST1000010001', 'Brian', 'Omondi', '2010-05-14', 'Thika Road, Nairobi', 1, 'Male', '4-A', 'brian.omondi@example.com'),
-('ST1000010002', 'Aisha', 'Mohammed', '2011-07-29', 'Mombasa Road, Mombasa', 1, 'Female', '4-A', 'aisha.mohammed@example.com');
+('ST1000010001', 'Kasun', 'Chamara', '2001-06-26', 'Colombo Road \r\nKandy', 1, 'Male', '4-B', 'stu@stu.stu'),
+('ST1000010002', 'Dasun', 'Shanuka', '2020-05-31', 'Ampara Road \r\nUhana', 1, 'Male', '4-B', 'stu1@stu1.stu1'),
+('STU1000040000', 'Dilip', 'Silva', '2020-05-27', 'asasas', 0, 'Male', '4-B', 'dil@dil.dil'),
+('STU100004005', 'Hashini', 'Asiri', '2020-05-27', 'asassas', 1, 'Female', 'Select Class Room', 'h@h.h');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `subject`
+--
+
+CREATE TABLE `subject` (
+  `sid` varchar(50) NOT NULL,
+  `title` varchar(200) NOT NULL,
+  `description` varchar(500) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `subject`
+--
+
+INSERT INTO `subject` (`sid`, `title`, `description`) VALUES
+('SCM4251', 'Science and Technology', 'Chemistry Basics\r\n');
 
 -- --------------------------------------------------------
 
@@ -224,4 +269,143 @@ CREATE TABLE `teacher` (
 --
 
 INSERT INTO `teacher` (`tid`, `fname`, `lname`, `address`, `contact`, `bday`, `skill`, `gender`, `email`) VALUES
-('TC1000020000', 'Mary', 'Kariuki', 'Ngong Road, Nairobi', '0723456789', '1985-08-10', 'Mathematics, Science', 'Female', 'mary.kariuki@example.com');
+('TC1000020000', 'Nimal ', 'Soyza', 'Kandy Road\r\nNittambuwa', '0339988554', '1990-06-19', 'Science\r\nMathematics\r\nHistory', 'Male', 'tea@tea.tea');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `role` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`role`, `email`, `password`) VALUES
+('Parent', 'par@par.par', 'par'),
+('Student', 'stu@stu.stu', 'stu'),
+('Teacher', 'tea@tea.tea', 'tea');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `attendance`
+--
+ALTER TABLE `attendance`
+  ADD PRIMARY KEY (`aid`);
+
+--
+-- Indexes for table `attendancereport`
+--
+ALTER TABLE `attendancereport`
+  ADD PRIMARY KEY (`aid`,`sid`);
+
+--
+-- Indexes for table `classroom`
+--
+ALTER TABLE `classroom`
+  ADD PRIMARY KEY (`hno`);
+
+--
+-- Indexes for table `exam`
+--
+ALTER TABLE `exam`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `examresult`
+--
+ALTER TABLE `examresult`
+  ADD PRIMARY KEY (`exam`,`student`);
+
+--
+-- Indexes for table `notice`
+--
+ALTER TABLE `notice`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `parent`
+--
+ALTER TABLE `parent`
+  ADD PRIMARY KEY (`pid`),
+  ADD UNIQUE KEY `email` (`email`);
+
+--
+-- Indexes for table `schedule`
+--
+ALTER TABLE `schedule`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `student`
+--
+ALTER TABLE `student`
+  ADD PRIMARY KEY (`sid`),
+  ADD UNIQUE KEY `email` (`email`);
+
+--
+-- Indexes for table `subject`
+--
+ALTER TABLE `subject`
+  ADD PRIMARY KEY (`sid`);
+
+--
+-- Indexes for table `teacher`
+--
+ALTER TABLE `teacher`
+  ADD PRIMARY KEY (`tid`),
+  ADD UNIQUE KEY `email` (`email`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`email`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `attendance`
+--
+ALTER TABLE `attendance`
+  MODIFY `aid` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `exam`
+--
+ALTER TABLE `exam`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `notice`
+--
+ALTER TABLE `notice`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `parent`
+--
+ALTER TABLE `parent`
+  MODIFY `pid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `schedule`
+--
+ALTER TABLE `schedule`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
